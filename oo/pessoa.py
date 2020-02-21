@@ -1,4 +1,6 @@
 class Pessoa:
+    # Atributo default ou de Classe
+    olhos = 2
     def __init__(self, *filhos, nome = None, idade = 49):
         self.idade = idade
         self.nome = nome
@@ -28,7 +30,18 @@ if __name__=='__main__':
     # É possível remover os atributos dinamicamente também
     del francisco.filhos
 
+    francisco.olhos = 1
+    del francisco.olhos
+
+    # __dict__ mostra os atributos de instância
     print(francisco.__dict__)
     print(guilherme.__dict__)
     print(gabriel.__dict__)
 
+    Pessoa.olhos = 3
+
+    print(Pessoa.olhos)
+    print(francisco.olhos)
+    print(guilherme.olhos)
+    print(gabriel.olhos)
+    print(id(Pessoa.olhos), id(francisco.olhos), id(guilherme.olhos), id(gabriel.olhos))
